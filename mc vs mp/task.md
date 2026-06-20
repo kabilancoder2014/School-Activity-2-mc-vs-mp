@@ -1,0 +1,26 @@
+# Tasks Checklist
+
+- `[x]` Center the logo and remove the top navbar:
+  - Removed top navbar from `index.html`.
+  - Centered the logo in the header and absolute positioned the theme toggle controls.
+- `[x]` Implement vertical scroll tracker text labels:
+  - Added text labels ("Intro", "Microprocessors", "Microcontrollers", "Differences") inside the `.scroll-track` container next to the vertical line.
+  - Positioned them at `0%`, `33.3%`, `66.6%`, and `100%` along the track line.
+- `[x]` Bind active glowing behaviors:
+  - Re-routed Scrollspy to toggle the `.active` class on `.tracker-label` elements instead of `.nav-item`s.
+  - Added glowing text-shadow styles to `.tracker-label.active` in `style.css`.
+  - Configured tracker label click listeners to scroll smoothly to sections.
+  - Increased `.container` padding-left on desktop to `200px` to clear labels.
+- `[x]` Implement stunning staggered entrance timelines:
+  - Configured custom, highly visible entry animations for each section on scroll.
+  - Set headings to slide in from the left and fade in.
+  - Set cards to slide up from the bottom, scale up, and settle with a premium bounce (`ease: 'back.out(1.25)'`).
+  - Set comparison tables to slide in from the right.
+  - Set all elements to stagger and overlap cleanly.
+  - Configured mobile-specific profiles with lower offsets for perfect responsiveness.
+- `[x]` Fix bugs:
+  - Changed card-title headers inside the `#intro` cards from `h2` to `h3` to remove formatting overlap with the main section headers.
+  - Registered the GSAP `ScrollTrigger` plugin at the top of the file.
+  - Corrected queries to avoid nested parent/child elements double-animating.
+  - Configured the scroll-dot tracker trigger to target `start: 0, end: "max"` for robust tracking.
+- `[x]` Verify vertical scrolling layout, left scroll tracker label glows, parallax scrub transitions, responsive styling, and zero console errors.

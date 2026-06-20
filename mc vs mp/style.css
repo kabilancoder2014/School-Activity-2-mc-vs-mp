@@ -1,0 +1,700 @@
+/* Import Outfit & Fira Code Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg-dark: #050811;
+    --bg-dark-card: rgba(10, 16, 32, 0.85);
+    --bg-dark-header: rgba(5, 8, 17, 0.9);
+    --border-dark: rgba(14, 165, 233, 0.18);
+    --text-dark-primary: #f0f4f9;
+    --text-dark-secondary: #8ab4f8;
+    
+    --bg-light: #f8fafc;
+    --bg-light-card: rgba(255, 255, 255, 0.85);
+    --bg-light-header: rgba(248, 250, 252, 0.9);
+    --border-light: rgba(15, 23, 42, 0.08);
+    --text-light-primary: #0f172a;
+    --text-light-secondary: #475569;
+
+    /* Accents (Dark theme default) */
+    --mp-color-theme: #00f2fe;
+    --mp-color-rgb-theme: 0, 242, 254;
+    --mc-color-theme: #f355ff;
+    --mc-color-rgb-theme: 243, 85, 255;
+    --accent-theme: #00ff66;
+    
+    /* Hover Card backgrounds (Dark theme default) */
+    --mp-hover-bg-theme: rgba(10, 20, 45, 0.85);
+    --mc-hover-bg-theme: rgba(22, 10, 45, 0.85);
+    
+    /* Grid lines (Dark theme default) */
+    --grid-color-theme: rgba(14, 165, 233, 0.025);
+    
+    /* Active variables mapped to Dark theme by default */
+    --bg: var(--bg-dark);
+    --bg-card: var(--bg-dark-card);
+    --bg-header: var(--bg-dark-header);
+    --border: var(--border-dark);
+    --text-primary: var(--text-dark-primary);
+    --text-secondary: var(--text-dark-secondary);
+    --mp-color: var(--mp-color-theme);
+    --mp-color-rgb: var(--mp-color-rgb-theme);
+    --mc-color: var(--mc-color-theme);
+    --mc-color-rgb: var(--mc-color-rgb-theme);
+    --accent: var(--accent-theme);
+    --mp-hover-bg: var(--mp-hover-bg-theme);
+    --mc-hover-bg: var(--mc-hover-bg-theme);
+    --grid-color: var(--grid-color-theme);
+    --table-header-bg: rgba(0, 0, 0, 0.4);
+    
+    --warning: #ffb700;
+    --danger: #ff3b30;
+    --shadow: 0 0 20px rgba(0, 242, 254, 0.08);
+    --blur: 10px;
+}
+
+[data-theme="light"] {
+    --bg: var(--bg-light);
+    --bg-card: var(--bg-light-card);
+    --bg-header: var(--bg-light-header);
+    --border: var(--border-light);
+    --text-primary: var(--text-light-primary);
+    --text-secondary: var(--text-light-secondary);
+    
+    /* Premium High-Contrast Light Mode Accents */
+    --mp-color: #0284c7; /* Sky Blue */
+    --mp-color-rgb: 2, 132, 199;
+    --mc-color: #7c3aed; /* Indigo */
+    --mc-color-rgb: 124, 58, 237;
+    --accent: #16a34a; /* Forest Green */
+    
+    /* Light Mode Card Hovers */
+    --mp-hover-bg: rgba(2, 132, 199, 0.05);
+    --mc-hover-bg: rgba(124, 58, 237, 0.05);
+    
+    /* Subtle Dark Grid */
+    --grid-color: rgba(15, 23, 42, 0.025);
+    --table-header-bg: rgba(15, 23, 42, 0.04);
+    
+    --shadow: 0 10px 30px rgba(15, 23, 42, 0.05), 0 0 1px rgba(15, 23, 42, 0.08);
+}
+
+/* Lenis Smooth Scroll Boilerplate */
+html.lenis, html.lenis body {
+    height: auto;
+}
+
+.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis-scrolling iframe {
+    pointer-events: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+    transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(var(--mp-color-rgb), 0.03) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(var(--mc-color-rgb), 0.03) 0%, transparent 40%),
+        linear-gradient(var(--grid-color) 1px, transparent 1px), 
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+}
+
+.tech-font, code, pre, .spec-val, .comparison-table td, .fact-value {
+    font-family: 'Fira Code', monospace !important;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+/* Header & Navbar */
+header {
+    background: var(--bg-header);
+    backdrop-filter: blur(var(--blur));
+    -webkit-backdrop-filter: blur(var(--blur));
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow);
+}
+
+.nav-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center; /* Center the logo */
+    align-items: center;
+    height: 70px;
+    width: 100%;
+}
+
+.logo {
+    font-size: 1.3rem;
+    background: linear-gradient(135deg, var(--mp-color), var(--mc-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.logo-text {
+    font-weight: 300; /* Light weight for kabilan */
+}
+
+.logo-bold {
+    font-weight: 800; /* Bold weight for Web */
+}
+
+.controls {
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    width: 38px;
+    height: 38px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+    background: rgba(14, 165, 233, 0.1);
+    box-shadow: 0 0 10px rgba(var(--mp-color-rgb), 0.2);
+}
+
+/* ==========================================
+   SCROLL TRACKER PROGRESS INDICATOR (LEFT EDGE)
+   ========================================== */
+.scroll-track {
+    position: fixed;
+    left: 45px;
+    top: 120px;
+    bottom: 120px;
+    width: 2px;
+    background: rgba(var(--mp-color-rgb), 0.12);
+    z-index: 90;
+}
+
+.scroll-dot {
+    position: fixed;
+    left: 42px; /* Centered on 2px line (8px width): 45px - (8-2)/2 = 42px */
+    top: 120px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    box-shadow: 0 0 8px var(--accent), 0 0 16px var(--accent);
+    z-index: 91;
+    transform: translateY(0);
+    will-change: transform;
+}
+
+.tracker-label {
+    position: absolute;
+    left: 18px; /* Offset text to the right of the track line */
+    font-family: 'Fira Code', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+    opacity: 0.35;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+}
+
+.tracker-label:hover {
+    color: var(--text-primary);
+    opacity: 0.8;
+}
+
+.tracker-label.active {
+    color: var(--accent);
+    opacity: 1;
+    text-shadow: 0 0 8px rgba(0, 255, 102, 0.6), 0 0 15px rgba(0, 255, 102, 0.4);
+    font-weight: 800;
+}
+
+.tracker-label[data-section="0"] { top: 0%; }
+.tracker-label[data-section="1"] { top: 33.3%; }
+.tracker-label[data-section="2"] { top: 66.6%; }
+.tracker-label[data-section="3"] { top: 100%; }
+
+/* ==========================================
+   RESPONSIVE VERTICAL SCROLL LAYOUT
+   ========================================== */
+
+/* Desktop: Vertical layout */
+@media (min-width: 969px) {
+    .main-wrapper {
+        width: 100%;
+        position: relative;
+    }
+
+    .sections-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .content-section {
+        width: 100%;
+        min-height: calc(100vh - 70px);
+        flex-shrink: 0;
+        padding: 80px 0;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .container {
+        padding: 0 20px 0 200px; /* Offset content right to clear the tracker line and its text labels */
+    }
+}
+
+/* Mobile & Tablet: Standard vertical layout */
+@media (max-width: 968px) {
+    .scroll-track, .scroll-dot {
+        display: none;
+    }
+
+    .main-wrapper {
+        width: 100%;
+        overflow: visible;
+    }
+
+    .sections-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .content-section {
+        width: 100%;
+        height: auto;
+        padding: 80px 0;
+        border-bottom: 1px solid var(--border);
+        will-change: transform, opacity;
+    }
+    
+    .container {
+        padding: 0 20px;
+    }
+
+    /* Mobile Header Layout (Prevent absolute overlay bugs) */
+    .nav-wrapper {
+        justify-content: space-between;
+    }
+    
+    .controls {
+        position: static;
+    }
+}
+
+.content-section:last-of-type {
+    border-bottom: none;
+}
+
+/* Typography elements */
+h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 26px;
+    background: var(--mp-color);
+}
+
+#microcontroller h2::before {
+    background: var(--mc-color);
+}
+
+#differences h2::before {
+    background: linear-gradient(135deg, var(--mp-color), var(--mc-color));
+}
+
+h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.section-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    margin-bottom: 40px;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 30px 0 20px 0;
+    width: 100%;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: rgba(14, 165, 233, 0.08);
+    border: 1px solid var(--border);
+    color: var(--mp-color);
+    margin-bottom: 15px;
+}
+
+.hero h1 span {
+    background: linear-gradient(135deg, var(--mp-color), var(--mc-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(var(--mp-color-rgb), 0.1);
+}
+
+/* Cards Grid */
+.cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.card {
+    background: var(--bg-card);
+    backdrop-filter: blur(var(--blur));
+    -webkit-backdrop-filter: blur(var(--blur));
+    border: 1px solid var(--border);
+    padding: 30px;
+    position: relative;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 4px;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+                box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+                border-color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+                background-color 0.3s ease;
+}
+
+.card > * {
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+                color 0.3s ease,
+                text-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px) scale(1.03);
+}
+
+.card.mp:hover {
+    border-color: var(--mp-color);
+    box-shadow: 0 10px 25px rgba(var(--mp-color-rgb), 0.15), 0 0 10px rgba(var(--mp-color-rgb), 0.1);
+    background: var(--mp-hover-bg);
+}
+
+.card.mc:hover {
+    border-color: var(--mc-color);
+    box-shadow: 0 10px 25px rgba(var(--mc-color-rgb), 0.15), 0 0 10px rgba(var(--mc-color-rgb), 0.1);
+    background: var(--mc-hover-bg);
+}
+
+.card:hover > * {
+    transform: scale(0.971); /* Counter-act scale(1.03) so text doesn't change size */
+}
+
+.card.mp:hover h3, .card.mp:hover .card-title {
+    color: var(--mp-color);
+    text-shadow: 0 0 8px rgba(var(--mp-color-rgb), 0.4);
+}
+
+.card.mc:hover h3, .card.mc:hover .card-title {
+    color: var(--mc-color);
+    text-shadow: 0 0 8px rgba(var(--mc-color-rgb), 0.4);
+}
+
+.card:hover p, .card:hover .spec-item, .card:hover .spec-item span {
+    color: var(--text-primary);
+}
+
+/* HUD Corners */
+.card::before, .card::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-style: solid;
+    pointer-events: none;
+}
+
+.card::before {
+    top: -1px;
+    left: -1px;
+    border-width: 2px 0 0 2px;
+}
+
+.card::after {
+    bottom: -1px;
+    right: -1px;
+    border-width: 0 2px 2px 0;
+}
+
+.card.mp::before, .card.mp::after {
+    border-color: var(--mp-color);
+}
+
+.card.mc::before, .card.mc::after {
+    border-color: var(--mc-color);
+}
+
+.card-icon {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.mp .card-icon {
+    color: var(--mp-color);
+    border-color: rgba(var(--mp-color-rgb), 0.3);
+    box-shadow: 0 0 10px rgba(var(--mp-color-rgb), 0.1);
+}
+
+.mc .card-icon {
+    color: var(--mc-color);
+    border-color: rgba(var(--mc-color-rgb), 0.3);
+    box-shadow: 0 0 10px rgba(var(--mc-color-rgb), 0.1);
+}
+
+.card-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.card-desc {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    font-size: 0.92rem;
+}
+
+.spec-list {
+    list-style: none;
+    margin-bottom: 25px;
+}
+
+.spec-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.spec-item svg {
+    width: 16px;
+    height: 16px;
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.mp .spec-item svg {
+    color: var(--mp-color);
+}
+
+.mc .spec-item svg {
+    color: var(--mc-color);
+}
+
+.learn-more-btn {
+    align-self: flex-start;
+    padding: 8px 18px;
+    border-radius: 0;
+    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.88rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.25s ease;
+    text-decoration: none;
+}
+
+.mp .learn-more-btn:hover {
+    background: rgba(0, 242, 254, 0.15);
+    border-color: var(--mp-color);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+}
+
+.mc .learn-more-btn:hover {
+    background: rgba(243, 85, 255, 0.15);
+    border-color: var(--mc-color);
+    box-shadow: 0 0 15px rgba(243, 85, 255, 0.2);
+}
+
+.fact-box {
+    text-align: left;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+/* Table styling */
+.table-wrapper {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    overflow-x: auto;
+    margin-top: 20px;
+    box-shadow: var(--shadow);
+    width: 100%;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.88rem;
+}
+
+.comparison-table th, 
+.comparison-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.comparison-table th {
+    background: var(--table-header-bg);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+}
+
+.comparison-table tr:last-child td {
+    border-bottom: none;
+}
+
+.comparison-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.comparison-table tbody tr:hover {
+    background: rgba(var(--mp-color-rgb), 0.04);
+}
+
+.feature-cell {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.mp-cell {
+    color: var(--mp-color);
+}
+
+.mc-cell {
+    color: var(--mc-color);
+}
+
+/* Footer styling */
+footer {
+    width: 100%;
+}
+
+/* Responsive Styles */
+@media (max-width: 968px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .content-section {
+        padding: 60px 20px;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+}
